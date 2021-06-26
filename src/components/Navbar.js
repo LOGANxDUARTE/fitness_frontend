@@ -29,6 +29,12 @@ const MainNavbar = (props) => {
             <NavItem>
               <NavLink href="/components/">Login</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink href="/activities">Activities</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/routines">Routines</NavLink>
+            </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Routine Options
@@ -47,7 +53,6 @@ const MainNavbar = (props) => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText>Get Buff</NavbarText>
         </Collapse>
       </Navbar>
     </div>
