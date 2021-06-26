@@ -1,16 +1,3 @@
-// export const BASE_URL = "https://calm-lowlands-92047.herokuapp.com/api";
-
-// export async function getActivities() {
-//     try {
-//         const res = await fetch(`${BASE_URL}/activities`);
-//         const data = await res.json();
-
-//         return data;
-//     } catch (error) {
-//         throw error;
-//     }
-// }
-
 export const BASE_URL = 'https://fitnesstrac-kr.herokuapp.com/api'
 /// ACTIVITIES
 export async function getActivities() {

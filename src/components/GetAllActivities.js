@@ -7,7 +7,7 @@ import "./GetAllActivities.css";
 
 import { getActivities } from "../api";
 
-const ShowCards = (props) => {
+const ShowActivityCards = (props) => {
   const { activities, setActivities } = props;
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const ShowCards = (props) => {
       return (
         <div className="card-container">
       <Card className="card">
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
+        <CardImg top width="100%" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Taijitu_-_Small_%28CW%29.svg" alt="Card image cap" />
         <CardBody key={index}>
           <CardTitle tag="h5">{activity.name}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
@@ -33,9 +33,10 @@ const ShowCards = (props) => {
       </div>
       );
     };
+    const mappedActivities = activities.map(renderCard);
 
     return <div className="App">
-      {activities.map(renderCard)}</div>;
+      {mappedActivities}</div>;
   };
 
-export default ShowCards;
+export default ShowActivityCards;
