@@ -36,6 +36,9 @@ const App = () => {
                   <Route path='/LoginRegister'>
                     <LoginRegister />
                   </Route>
+                  <Route path='/logout'>
+                    <logoutUser />
+                  </Route>
               </Switch>
           </div>
     </Router>

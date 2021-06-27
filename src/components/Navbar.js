@@ -13,6 +13,7 @@ import {
   DropdownItem,
   NavbarText
 } from 'reactstrap';
+import logoutUser from '../api';
 
 const MainNavbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +48,9 @@ const MainNavbar = (props) => {
                   Build a Workout
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>
+                <DropdownItem 
+                href="/logout"
+                onClick={<logoutUser/>}>
                   Log Out
                 </DropdownItem>
               </DropdownMenu>

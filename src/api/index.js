@@ -11,6 +11,32 @@ export async function getActivities() {
     throw error;
   }
 }
+
+export async function postActivity(name, description) {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      return;
+    }
+
+    const res = await fetch(`${BASE_URL}/activities`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ name, description }),
+    });
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 /// ROUTINES
 export async function getRoutines() {
   try {
@@ -20,6 +46,29 @@ export async function getRoutines() {
     return data;
   } catch (error) {
     throw error;
+  }
+}
+
+export const createRoutine = async(name, goal, isPublic) => {
+  try{
+      const token = localStorage.getItem("token");
+      if(!token) return
+      const response = await fetch(`${BASE_URL}/routines`, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({
+                  name: name,
+                  goal: goal,
+                  isPublic: isPublic
+              })
+          });
+          const data = await response.json();
+          return data
+  }catch(error){
+      throw error
   }
 }
 
