@@ -27,7 +27,7 @@ const MainNavbar = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Login</NavLink>
+              <NavLink href="/LoginRegister">Login</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/activities">Activities</NavLink>
@@ -48,7 +48,7 @@ const MainNavbar = (props) => {
                 </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
-                  Reset
+                  Log Out
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

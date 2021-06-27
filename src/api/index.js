@@ -1,51 +1,114 @@
-export const BASE_URL = 'https://fitnesstrac-kr.herokuapp.com/api'
+export const BASE_URL = "https://fitnesstrac-kr.herokuapp.com/api";
+
 /// ACTIVITIES
 export async function getActivities() {
-    try {
-        const response = await fetch(`${BASE_URL}/activities`)
-        const data = response.json()
+  try {
+    const response = await fetch(`${BASE_URL}/activities`);
+    const data = response.json();
 
-        return data 
-    }catch(error){
-        throw error
-    }
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }
 /// ROUTINES
 export async function getRoutines() {
-    try {
-        const response = await fetch(`${BASE_URL}/routines`)
-        const data = response.json()
+  try {
+    const response = await fetch(`${BASE_URL}/routines`);
+    const data = response.json();
 
-        return data 
-    }catch(error){
-        throw error
-    }
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }
 
-
 /// USERS
-export async function registerUser(usernameValue, passwordValue) {
-    const url = `${BASE_URL}/users/register`
-    
-    try {
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user: {
-              username: usernameValue,
-              password: passwordValue,
-            },
-          }),
-        });
-        const {
-          data: { token },
-        } = await response.json();
-        
-        localStorage.setItem("token", JSON.stringify(token));
-      } catch (error) {
-            throw error
-    }
+export async function registerUser(username, password) {
+  try {
+    const res = await fetch(`${BASE_URL}/users/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    });
+
+    const { token, user } = await res.json();
+
+    localStorage.setItem("token", JSON.stringify(token));
+    localStorage.setItem("user", JSON.stringify(user));
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function loginUser(username, password) {
+  try {
+    const res = await fetch(`${BASE_URL}/users/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    });
+
+    const { token, user } = await res.json();
+
+    localStorage.setItem("token", JSON.stringify(token));
+    localStorage.setItem("user", JSON.stringify(user));
+  } catch (error) {
+    throw error;
+  }
+}
+
+export function logoutUser() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+}
+
+export async function getMe() {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return;
+  }
+
+  try {
+    const res = await fetch(`${BASE_URL}/users/me`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getRoutinesByUsername(username) {
+  try {
+    const token = localStorage.getItem("token")
+      ? localStorage.getItem("token")
+      : "";
+
+    const res = await fetch(`${BASE_URL}/users/${username}/routines`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
 }

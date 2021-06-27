@@ -12,7 +12,7 @@ import {
     Link
 } from 'react-router-dom'
 
-import { ShowActivityCards, GetAllRoutines } from "./components";
+import { ShowActivityCards, GetAllRoutines, LoginRegister, Home } from "./components";
 
 
 const App = () => {
@@ -25,13 +25,16 @@ const App = () => {
           <MainNavbar />
               <Switch>
                   <Route exact path='/'>
-                    {/* <Homepage/> */}
+                    <Home />
                   </Route>
                   <Route path='/activities'>
                     <ShowActivityCards activities={activities} setActivities={setActivities} />
                   </Route>
                   <Route path='/routines'>
                     <GetAllRoutines routines={routines} setRoutines={setRoutines} />
+                  </Route>
+                  <Route path='/LoginRegister'>
+                    <LoginRegister />
                   </Route>
               </Switch>
           </div>

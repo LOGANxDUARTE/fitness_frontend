@@ -20,7 +20,7 @@ const GetAllRoutines = (props) => {
     return (
       <div className="card-container">
     <Card className="card">
-      <CardImg top width="100%" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg" alt="Card image cap" />
+      <CardImg top width="100%" src="https://st.depositphotos.com/1146092/1944/i/950/depositphotos_19444603-stock-photo-personal-trainer-dog.jpg" alt="Card image cap" />
       <CardBody key={index}>
         <CardTitle tag="h5">{routines.name}</CardTitle>
         <CardSubtitle tag="h6" className="mb-2 text-muted">{routines.creatorname}</CardSubtitle>
