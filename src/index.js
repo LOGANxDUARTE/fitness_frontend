@@ -24,19 +24,19 @@ const App = () => {
           <div className='App'>
           <MainNavbar />
               <Switch>
-                  <Route exact path='/'>
+                  <Route path={'/'} exact>
                     <Home />
                   </Route>
-                  <Route path='/activities'>
+                  <Route path={'/activities'}>
                     <ShowActivityCards activities={activities} setActivities={setActivities} />
                   </Route>
-                  <Route path='/routines'>
+                  <Route path={'/routines'}>
                     <GetAllRoutines routines={routines} setRoutines={setRoutines} />
                   </Route>
-                  <Route path='/LoginRegister'>
+                  <Route path={'/LoginRegister'}>
                     <LoginRegister />
                   </Route>
-                  <Route path='/logout'>
+                  <Route path={'/logout'}>
                     <logoutUser />
                   </Route>
               </Switch>
